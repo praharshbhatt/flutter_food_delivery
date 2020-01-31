@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "468974510479",
+    "firebase_url": "https://great-homies.firebaseio.com",
+    "project_id": "great-homies",
+    "storage_bucket": "great-homies.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:468974510479:android:5bd49ba8a1db9bf2842bfa",
+        "android_client_info": {
+          "package_name": "com.greathomies.great_homies"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "468974510479-4iq460nurj4vt6j8aanih0qq1tmoagu0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.greathomies.great_homies",
+            "certificate_hash": "84b6f3376da7827be9347865765c94b762049631"
+          }
+        },
+        {
+          "client_id": "468974510479-bukdake0j56hif1es9r6j9ierrqbcfv3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJ2-kV2mj_hJsGUVzYrDMhhSIL8fVFfCs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "468974510479-bukdake0j56hif1es9r6j9ierrqbcfv3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
