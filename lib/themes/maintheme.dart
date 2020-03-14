@@ -62,12 +62,12 @@ ThemeData getMainThemeWithBrightness(BuildContext context, Brightness appBrightn
     // Define the default TextTheme. Use this to specify the default
     // text styling for headlines, titles, bodies of text, and more.
     textTheme: TextTheme(
-      headline: TextStyle(
+      headline1: TextStyle(
           fontSize: size * 0.085,
           fontFamily: 'Poppins',
           fontWeight: FontWeight.bold,
           color: appBrightness == Brightness.light ? Colors.black : Colors.white70),
-      title: TextStyle(
+      headline2: TextStyle(
           fontSize: size * 0.08,
           fontFamily: 'Poppins',
           fontWeight: FontWeight.bold,
@@ -77,27 +77,13 @@ ThemeData getMainThemeWithBrightness(BuildContext context, Brightness appBrightn
           fontFamily: 'Poppins',
           fontWeight: FontWeight.bold,
           color: appBrightness == Brightness.light ? Colors.black : Colors.white70),
-      body1: TextStyle(
+      bodyText1: TextStyle(
           fontSize: size * 0.04,
           fontFamily: "Poppins",
           color: appBrightness == Brightness.light ? Colors.black : Colors.white70),
-      body2: TextStyle(
+      bodyText2: TextStyle(
           fontSize: size * 0.038,
           fontFamily: "Poppins",
-          color: appBrightness == Brightness.light ? Colors.black : Colors.white70),
-      display1: TextStyle(
-          fontFamily: "Poppins",
-          fontWeight: FontWeight.w500,
-          fontSize: size * 0.04,
-          color: appBrightness == Brightness.light ? Colors.black : Colors.white70),
-      display2: TextStyle(
-          fontSize: MediaQuery.of(context).size.width * 0.025,
-          color: appBrightness == Brightness.light ? Colors.black : Colors.white70),
-      display3: TextStyle(
-          fontSize: MediaQuery.of(context).size.width * 0.035,
-          color: appBrightness == Brightness.light ? Colors.black : Colors.white70),
-      display4: TextStyle(
-          fontSize: MediaQuery.of(context).size.width * 0.045,
           color: appBrightness == Brightness.light ? Colors.black : Colors.white70),
     ),
   );

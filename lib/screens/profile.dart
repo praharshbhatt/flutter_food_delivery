@@ -45,7 +45,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 //Title
                 Text(
                   userProfile.containsKey("name") ? userProfile["name"] : "Profile",
-                  style: myAppTheme.textTheme.body2,
+                  style: myAppTheme.textTheme.bodyText2,
                   textAlign: TextAlign.center,
                 ),
               ],
@@ -101,7 +101,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           padding: const EdgeInsets.all(8),
                           child: Text(
                             userProfile.containsKey("name") ? userProfile["name"] : "Unknown User",
-                            style: myAppTheme.textTheme.body2,
+                            style: myAppTheme.textTheme.bodyText2,
                           ),
                         ),
                       ])),
@@ -125,7 +125,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           padding: const EdgeInsets.all(8),
                           child: Text(
                             userProfile.containsKey("email") ? userProfile["email"] : "Unknown Email",
-                            style: myAppTheme.textTheme.body2,
+                            style: myAppTheme.textTheme.bodyText2,
                           ),
                         ),
                       ])),

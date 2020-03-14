@@ -12,7 +12,7 @@ import '../widgets/appbar.dart';
 import '../widgets/drawer.dart';
 
 //==================This is the Homepage for the app==================
-String strAppBarTitle = "Great Homies";
+String strAppBarTitle = "Restaurants in your area";
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -56,46 +56,36 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         drawer: getDrawer(context, scaffoldKey),
 
         //Body
-        body: getRestaurants(),
+        body: getRestaurants(size),
       ),
     );
   }
 
-
-
-
-
-  getRestaurants(){
+  getRestaurants(double size) {
     return FutureBuilder(
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         if (snapshot == null || snapshot.data == null || snapshot.hasData == false) {
           return Center(
-              child: Container(
-                width: 300,
-                height: 300,
-                child: FlareActor(
-                    "assets/animations/pizza-loading.flr", isPaused: false,
-                    alignment: Alignment.center, fit: BoxFit.contain,
-                    animation: "animate"
-                ),
-              )
+            child: Container(
+              width: 300,
+              height: 300,
+              child: FlareActor("assets/animations/pizza-loading.flr",
+                  isPaused: false, alignment: Alignment.center, fit: BoxFit.contain, animation: "animate"),
+            ),
           );
         } else {
           return ListView.builder(
               padding: EdgeInsets.all(8),
-              scrollDirection: MediaQuery
-                  .of(context)
-                  .size
-                  .height > MediaQuery
-                  .of(context)
-                  .size
-                  .width ? Axis.vertical : Axis.horizontal,
+              scrollDirection: MediaQuery.of(context).size.height > MediaQuery.of(context).size.width
+                  ? Axis.vertical
+                  : Axis.horizontal,
               itemCount: snapshot.data.length,
-
-
               itemBuilder: (context, index) {
                 //Data
                 DocumentSnapshot _ds = snapshot.data[index];
+
+                List lstPhotos = new List();
+                if (_ds.data.containsKey("Photos")) lstPhotos = _ds.data["Photos"];
 
                 return InkWell(
                   child: Card(
@@ -107,54 +97,53 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
-
                           //Image
                           ClipRRect(
                             borderRadius: BorderRadius.circular(15),
                             child: Container(
-                              height: 100, child: Image.network(
-                              _ds.data["Photos"][0], fit: BoxFit.cover,
-                            ),
+                              width: size * 0.35,
+                              height: 90,
+                              child: Image.network(
+                                lstPhotos.length > 0 ? lstPhotos[0] ?? "" : "https://cdn2.iconfinder.com/data/icons/food-restaurant-1/128/flat-11-512.png",
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
 
+                          Container(
+                            width: size * 0.5,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                //Food Place Name
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    _ds.data["name"] ?? "",
+                                    style: myAppTheme.textTheme.caption,
+                                  ),
+                                ),
 
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
+                                //Address
+                                Padding(
+                                  padding: const EdgeInsets.fromLTRB(8, 4, 8, 4),
+                                  child: Text(_ds.data["address"] ?? "", style: myAppTheme.textTheme.bodyText2),
+                                ),
 
-                              //Food Place Name
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(_ds.data["name"], style: myAppTheme.textTheme.caption,),
-                              ),
-
-                              //Address
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(8, 4, 8, 4),
-                                child: Text(
-                                    _ds.data["address"], style: myAppTheme.textTheme.body2),
-                              ),
-
-
-                              //Rating
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(8, 2, 8, 2),
-                                child: Text("Ratings: " + _ds.data["rating"].toString() + " stars",
-                                    style: myAppTheme.textTheme.body2),
-                              ),
-
-
-                            ],
+                                //Rating
+                                Padding(
+                                  padding: const EdgeInsets.fromLTRB(8, 2, 8, 2),
+                                  child: Text("Ratings: " + _ds.data["rating"].toString() ?? "-" + " stars",
+                                      style: myAppTheme.textTheme.bodyText2),
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),
                     ),
-
                   ),
-
-
                   onTap: () {
                     Navigator.push(
                       context,
@@ -169,10 +158,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     );
   }
 
-
   Future<List> getRestaurantContent() async {
     //Speed up the fucking loading
-    await Future.delayed(Duration(seconds: 2));
+//    await Future.delayed(Duration(seconds: 2));
 
     QuerySnapshot _qs = await Firestore.instance.collection("Restaurants").getDocuments();
     return _qs.documents;

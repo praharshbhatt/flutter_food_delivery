@@ -65,10 +65,10 @@ TextStyle getTextStyle(_context, _textSize, _textColor) {
   TextStyle _textStyle;
 
   //Defining size
-  if (_textSize == null) _textSize =  myAppTheme.textTheme.body1.fontSize;
+  if (_textSize == null) _textSize =  myAppTheme.textTheme.bodyText1.fontSize;
   //Defining textColor
   if (_textColor == null) {
-    _textStyle = myAppTheme.textTheme.body1;
+    _textStyle = myAppTheme.textTheme.bodyText1;
   } else {
     _textStyle = TextStyle(
       fontSize: _textSize,

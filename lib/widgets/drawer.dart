@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:great_homies/screens/orders.dart';
 
 import '../main.dart';
 import '../screens/account/signin.dart';
@@ -37,7 +38,7 @@ getDrawer(BuildContext context, GlobalKey<ScaffoldState> scaffoldKey) {
                 //Menu Text
                 Text(
                   "Menu",
-                  style: myAppTheme.textTheme.body1,
+                  style: myAppTheme.textTheme.bodyText1,
                   textAlign: TextAlign.center,
                 ),
 
@@ -82,7 +83,7 @@ getDrawer(BuildContext context, GlobalKey<ScaffoldState> scaffoldKey) {
                     padding: const EdgeInsets.all(8),
                     child: Text(
                       userProfile.containsKey("email") ? userProfile["email"] : "Unknown Email",
-                      style: myAppTheme.textTheme.body2,
+                      style: myAppTheme.textTheme.bodyText2,
                     ),
                   ),
                 ])),
@@ -108,7 +109,7 @@ getDrawer(BuildContext context, GlobalKey<ScaffoldState> scaffoldKey) {
                           padding: const EdgeInsets.all(8),
                           child: Text(
                             "Manage the settings and your prefrences from here",
-                            style: myAppTheme.textTheme.body2,
+                            style: myAppTheme.textTheme.bodyText2,
                           ),
                         ),
                       ]),
@@ -126,6 +127,43 @@ getDrawer(BuildContext context, GlobalKey<ScaffoldState> scaffoldKey) {
                     ),
                   )
                 : Container(),
+
+            Card(
+              color: myAppTheme.cardColor,
+              margin: EdgeInsets.all(12),
+              shape: roundedShape(),
+              elevation: 6,
+              child: InkWell(
+                child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
+                  //Login ID
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      "Orders",
+                      style: myAppTheme.textTheme.caption,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: Text(
+                      "Manage all past orders",
+                      style: myAppTheme.textTheme.bodyText2,
+                    ),
+                  ),
+                ]),
+                onTap: () {
+                  if (blIsSignedIn) {
+                    //Open past orders screen
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => OrdersScreen()),
+                    );
+                  } else {
+                    showSnackBar(scaffoldKey: scaffoldKey, text: "Please Log in first");
+                  }
+                },
+              ),
+            ),
 
             //Log Out
             Card(
@@ -174,7 +212,7 @@ getDrawer(BuildContext context, GlobalKey<ScaffoldState> scaffoldKey) {
                     padding: const EdgeInsets.all(8),
                     child: Text(
                       "Made by\nMargin Patel and\nSharad Vinod",
-                      style: myAppTheme.textTheme.body2,
+                      style: myAppTheme.textTheme.bodyText2,
                     ),
                   ),
                 ]),

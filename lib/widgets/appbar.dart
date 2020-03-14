@@ -40,25 +40,16 @@ getAppBar(
           textAlign: TextAlign.center,
         ),
 
-        //Profile
-        userProfile.containsKey("photo url")
-            ? InkWell(
-                child: Container(
-                  height: size * 0.07,
-                  width: size * 0.07,
-                  child: CircleAvatar(
-                    backgroundImage: NetworkImage(userProfile["photo url"]),
-                    minRadius: 90,
-                    maxRadius: 180,
-                  ),
-                ),
-                onTap: () => _checkLoggedInUser(context))
-            : Center(
-                child: IconButton(
-                    icon: Icon(Icons.account_circle),
-                    iconSize: size * 0.07,
-                    onPressed: () => _checkLoggedInUser(context)),
+        //Cart
+        Center(
+          child: IconButton(
+              icon: Icon(
+                Icons.shopping_cart,
+                color: myAppTheme.primaryColor,
               ),
+              iconSize: size * 0.07,
+              onPressed: () {}),
+        ),
       ],
     ),
   );

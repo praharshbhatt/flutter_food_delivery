@@ -9,7 +9,7 @@ void showSnackBar({@required scaffoldKey, String text, String buttonText, VoidCa
     scaffoldKey.currentState.showSnackBar(
       SnackBar(
         backgroundColor: myAppTheme.backgroundColor,
-        content: Text(text, style: myAppTheme.textTheme.body2),
+        content: Text(text, style: myAppTheme.textTheme.bodyText2),
         action: SnackBarAction(label: buttonText, onPressed: onPressed),
       ),
     );
@@ -30,11 +30,11 @@ void showAlertDialog(BuildContext context, String title, String body) {
       return AlertDialog(
         backgroundColor: myAppTheme.backgroundColor,
         title: new Text(title, style: myAppTheme.textTheme.caption),
-        content: new Text(body, style: myAppTheme.textTheme.body2),
+        content: new Text(body, style: myAppTheme.textTheme.bodyText2),
         actions: <Widget>[
           // usually buttons at the bottom of the dialog
           new FlatButton(
-            child: new Text("Close", style: myAppTheme.textTheme.body2),
+            child: new Text("Close", style: myAppTheme.textTheme.bodyText2),
             onPressed: () {
               Navigator.of(context).pop();
             },
@@ -69,7 +69,7 @@ showLoading(BuildContext context) {
                   valueColor: AlwaysStoppedAnimation<Color>(myAppTheme.accentColor)),
               Padding(
                 padding: const EdgeInsets.all(10),
-                child: new Text("Loading, please wait...", style: myAppTheme.textTheme.body2),
+                child: new Text("Loading, please wait...", style: myAppTheme.textTheme.bodyText2),
               ),
             ],
           ),
