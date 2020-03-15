@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:great_homies/screens/orders.dart';
+import 'package:great_homies/screens/order_management/orders.dart';
 
 import '../main.dart';
 import '../screens/account/signin.dart';

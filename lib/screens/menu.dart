@@ -11,8 +11,8 @@ import 'package:great_homies/widgets/shapes.dart';
 import 'package:great_homies/widgets/stepper_switch.dart';
 import '../main.dart';
 import '../widgets/appbar.dart';
-import 'order.dart';
-import 'checkout.dart';
+import 'order_management/order.dart';
+import 'order_management/checkout.dart';
 
 //==================This is the Menu for the app==================
 class MenuScreen extends StatefulWidget {
@@ -83,21 +83,24 @@ class _MenuScreenState extends State<MenuScreen> {
 
                     //Cover Photo
                     lstPhotos.length > 0
-                        ? CarouselSlider(
-                            height: MediaQuery.of(context).size.height * 0.22,
-                            autoPlay: true,
-                            autoPlayInterval: Duration(seconds: 2),
-                            autoPlayAnimationDuration: Duration(milliseconds: 800),
-                            autoPlayCurve: Curves.fastOutSlowIn,
-                            pauseAutoPlayOnTouch: Duration(seconds: 10),
-                            enlargeCenterPage: true,
-                            items: lstPhotos.map((i) {
-                              return Builder(
-                                builder: (BuildContext context) {
-                                  return Image.network(i);
-                                },
-                              );
-                            }).toList(),
+                        ? Hero(
+                            tag: lstPhotos.length > 0 ? lstPhotos[0] ?? mapFoodSite["name"] : mapFoodSite["name"],
+                            child: CarouselSlider(
+                              height: MediaQuery.of(context).size.height * 0.22,
+                              autoPlay: true,
+                              autoPlayInterval: Duration(seconds: 2),
+                              autoPlayAnimationDuration: Duration(milliseconds: 800),
+                              autoPlayCurve: Curves.fastOutSlowIn,
+                              pauseAutoPlayOnTouch: Duration(seconds: 10),
+                              enlargeCenterPage: true,
+                              items: lstPhotos.map((i) {
+                                return Builder(
+                                  builder: (BuildContext context) {
+                                    return Image.network(i);
+                                  },
+                                );
+                              }).toList(),
+                            ),
                           )
                         : Container(),
                   ],
@@ -176,8 +179,8 @@ class _MenuScreenState extends State<MenuScreen> {
                                     //Rating
                                     Padding(
                                       padding: const EdgeInsets.fromLTRB(8, 2, 8, 2),
-                                      child:
-                                          Text("₹" + _ds.data["price"].toString(), style: myAppTheme.textTheme.bodyText2),
+                                      child: Text("₹" + _ds.data["price"].toString(),
+                                          style: myAppTheme.textTheme.bodyText2),
                                     ),
                                   ],
                                 ),
