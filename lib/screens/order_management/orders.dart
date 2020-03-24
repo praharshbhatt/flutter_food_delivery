@@ -19,13 +19,6 @@ class _OrdersScreenState extends State<OrdersScreen> {
 
   @override
   Widget build(BuildContext context) {
-    double size = MediaQuery.of(context).size.width < MediaQuery.of(context).size.height
-        ? MediaQuery.of(context).size.width
-        : (!kIsWeb) ? MediaQuery.of(context).size.height : MediaQuery.of(context).size.height / 2;
-
-
-
-
 
 
 

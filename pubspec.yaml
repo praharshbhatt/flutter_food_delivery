@@ -1,16 +1,14 @@
 name: great_homies
-description: A food App made in Flutter
+description: A food delivery App made in Flutter with Firebase at the backend
 version: 1.0.0+1
-
 environment:
   sdk: ">=2.1.0 <3.0.0"
-
 dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^0.1.3
   firebase_core: ^0.4.4+3
-#  firebase_analytics: ^5.0.10
+  #firebase_analytics: ^5.0.10
   cloud_firestore: ^0.13.4+2
   firebase_auth: ^0.15.5+2
   google_sign_in: ^4.1.4
@@ -36,11 +34,8 @@ flutter_icons:
   image_path: "assets/images/icon.png"
   android: true
   ios: true
-
-
 flutter:
   uses-material-design: true
-
   assets:
     - assets/images/
     - assets/animations/

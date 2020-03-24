@@ -292,9 +292,7 @@ class _MenuScreenState extends State<MenuScreen> {
                           showLoading(context);
 
                           //Set the order
-
                           String strOrderID = DateTime.now().toString();
-
                           await Firestore.instance
                               .collection("Users")
                               .document(userProfile["email"])
@@ -306,10 +304,11 @@ class _MenuScreenState extends State<MenuScreen> {
                             "timestamp": strOrderID,
                             "total": dbTotal,
                             "status description": "Preparing Order",
-                            "status value": 1,
-                            "address": userProfile["address"] ?? "1, house, near place, city"
+                            "status value": 10.0,
+                            "address": userProfile["address"] ?? "1, house, near place, city",
+                            "user name": userProfile["name"],
+                            "user email": userProfile["email"]
                           });
-
                           Navigator.of(context, rootNavigator: true).pop();
 
                           //Go to the Checkout screen

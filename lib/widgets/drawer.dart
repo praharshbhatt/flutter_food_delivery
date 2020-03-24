@@ -200,25 +200,6 @@ getDrawer(BuildContext context, GlobalKey<ScaffoldState> scaffoldKey) {
                         },
                       )),
 
-            //Made by
-            Card(
-              color: myAppTheme.cardColor,
-              margin: EdgeInsets.all(12),
-              shape: roundedShape(),
-              elevation: 6,
-              child: InkWell(
-                child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: Text(
-                      "Made by\nMargin Patel and\nSharad Vinod",
-                      style: myAppTheme.textTheme.bodyText2,
-                    ),
-                  ),
-                ]),
-                onTap: () async {},
-              ),
-            ),
           ],
         ),
       ),

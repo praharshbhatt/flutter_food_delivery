@@ -3,9 +3,9 @@ A food App made in Flutter
 
 
 
-<div align="center">
+<!--<div align="center">-->
   <img src="demo.gif" height="540"/>
-</div>
+<!--</div>-->
 
 <br>
 <img src="Screenshot_1.png" width=200>

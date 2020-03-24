@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rounded_progress_bar/flutter_rounded_progress_bar.dart';
 import 'package:flutter_rounded_progress_bar/rounded_progress_bar_style.dart';
@@ -31,10 +30,6 @@ class _OrderScreenState extends State<OrderScreen> {
 
   @override
   Widget build(BuildContext context) {
-    double size = MediaQuery.of(context).size.width < MediaQuery.of(context).size.height
-        ? MediaQuery.of(context).size.width
-        : (!kIsWeb) ? MediaQuery.of(context).size.height : MediaQuery.of(context).size.height / 2;
-
     return SafeArea(
       child: Scaffold(
           key: scaffoldKey,
@@ -142,6 +137,17 @@ class _OrderScreenState extends State<OrderScreen> {
                           }),
                     ),
 
+
+                    //Total Price
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text("Total Price: ", style: myAppTheme.textTheme.caption),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text("₹" + snapshot.data["total"].toString(), style: myAppTheme.textTheme.bodyText1),
+                    ),
+
                     //Tracking
                     Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -153,7 +159,7 @@ class _OrderScreenState extends State<OrderScreen> {
                           Text("Status: " + snapshot.data["status description"], style: myAppTheme.textTheme.bodyText1),
                     ),
                     RoundedProgressBar(
-                        childLeft: Icon(Icons.add_shopping_cart),
+                        childLeft: Icon(Icons.restaurant, color: Colors.white),
                         percent: snapshot.data["status value"] + 0.0,
                         theme: RoundedProgressBarTheme.red),
 
